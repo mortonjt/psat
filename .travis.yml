@@ -7,10 +7,8 @@ env:
   - NUMPY_VERSION="=1.7"
 install:
   - source activate env_name
-  - pip install -e '.[all]'
+  - pip install flake8
 script:
-  - flake8 psat/*.py psat/permutation/*.py pstats/permutation/tests/*.py bin/*.py setup.py
-  # we just check coverage in the latest version of NumPy
-  - if [ ${WITH_COVERAGE} ]; then nosetests emperor --with-coverage --cover-package=emperor --cover-inclusive tests; fi
+  - flake8 psat/*.py psat/permutation/*.py psat/permutation/tests/*.py setup.py
 after_success:
   - coveralls
